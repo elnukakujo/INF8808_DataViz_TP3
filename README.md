@@ -5,7 +5,8 @@
 In the project folder:  
 - python -m virtualenv -p python3.10 venv  
 - venv\Scripts\activate  
-- python -m pip install -r requirements.windows.txt  
+- python -m pip install -r requirements.windows.txt 
+- cd src 
 - python server.py  
 - After, open the localhost:8050 in your browser  
 
