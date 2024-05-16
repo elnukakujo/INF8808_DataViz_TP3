@@ -13,7 +13,7 @@ In the project folder:
 ### Linux
 In the project folder:  
 - python3.10 -m virtualenv -p python3.10 venv  
-- source venv\bin\activate  
+- source venv/bin/activate  
 - python3.10 -m pip install -r requirements.linux.txt
 - cd src
 - python3.10 server.py  
