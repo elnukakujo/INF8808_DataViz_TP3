@@ -18,7 +18,7 @@ def get_empty_figure():
     # TODO : Construct the empty figure to display. Make sure to 
     # set dragmode=False in the layout.
     
-    fig=px.scatter(height=400, width=800)
+    fig=px.scatter()
     fig.update_layout(
         dragmode=False,
         xaxis= dict(
@@ -32,10 +32,11 @@ def get_empty_figure():
                 text= "No data to display. Select a cell in the heatmap for more information.",
                 showarrow= False,
                 font= dict(
-                    size= 16
+                    size= 14
                 )
             )
-        ]
+        ],
+        plot_bgcolor="#ffffff" #THEME['background_color']
     )
     return fig
 
@@ -51,8 +52,16 @@ def add_rectangle_shape(fig):
         paper of the figure. The height goes from
         0.25% to 0.75% the height of the figure.
     '''
-    # TODO : Draw the rectangle
-    return None
+    fig.update_xaxes(range=[0,4])
+    fig.update_yaxes(range=[0,4])
+    fig.add_shape(
+        type='rect',
+        x0=0, x1=4,
+        y0=1, y1=3,
+        fillcolor='#DFD9E2', #THEME['pale_color']
+        line_color='#ffffff' #THEME['background_color']
+    )
+    return fig
 
 
 def get_figure(line_data, arrond, year):

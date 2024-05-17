@@ -30,10 +30,18 @@ def get_figure(data):
             x='Year',
             y='Neighborhood',
             colortitle='Trees'
-        )
+        ),
+        color_continuous_scale='Bluyl', #THEME['colorscale']
     )
     fig.update_layout(
-        dragmode=False
+        dragmode=False,
+        xaxis=dict(
+            tickmode='array',
+            tickvals=data.columns,
+            ticktext=data.columns.year
+        )
     )
-    fig.show()
+    fig.update_traces(
+        hovertemplate=hover_template.get_heatmap_hover_template()
+    )
     return fig
