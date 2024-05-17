@@ -51,7 +51,7 @@ def summarize_yearly_counts(dataframe):
     # TODO : Summarize df    
     dataframe['Counts']=1
     
-    return dataframe.groupby(['Arrond_Nom',pd.Grouper(key="Date_Plantation",freq="D")]).sum(numeric_only=True)
+    return dataframe.groupby(['Arrond_Nom',pd.Grouper(key="Date_Plantation",freq="Y")]).sum(numeric_only=True)
 
 
 def restructure_df(yearly_df):
