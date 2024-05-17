@@ -86,17 +86,26 @@ def get_figure(line_data, arrond, year):
             The figure to be displayed
     '''
     # TODO : Construct the required figure. Don't forget to include the hover template
-    fig=px.line(
-        line_data,
-        x='Date_Plantation',
-        y='Counts',
-        title=f'Trees planted in {arrond}'
-    )
+    if len(line_data.Counts.sort_values())>2:
+        fig=px.line(
+            line_data,
+            x='Date_Plantation',
+            y='Counts',
+            title=f'Trees planted in {arrond}'
+        )
+    else:
+        fig=px.scatter(
+            line_data[line_data.Counts!=0],
+            x='Date_Plantation',
+            y='Counts',
+            title=f'Trees planted in {arrond}'
+        )
     fig.update_xaxes(
-        tickformat="%d %b"
+            tickformat="%d %b"
     )
     fig.update_traces(
-        line_color=THEME['line_chart_color']
+        line_color=THEME['line_chart_color'],
+        hovertemplate=hover_template.get_linechart_hover_template()
     )
     fig.update_layout(
         xaxis_title=None,

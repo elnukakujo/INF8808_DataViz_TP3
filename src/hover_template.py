@@ -30,4 +30,6 @@ def get_linechart_hover_template():
         are font 'Roboto' and regular weight.
     '''
     # TODO : Define and return the hover template
+    return ('<span style="font-family: Roboto Slabk"><b>Date : </b></span>%{x}'
+            +'<br><span style="font-family: Roboto Slabk"><b>Trees : </b></span>%{y}</br>')
 
