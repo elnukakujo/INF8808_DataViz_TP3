@@ -15,10 +15,30 @@ def get_empty_figure():
         in the heatmap for more information.
 
     '''
-
     # TODO : Construct the empty figure to display. Make sure to 
     # set dragmode=False in the layout.
-    return None
+    
+    fig=px.scatter(height=400, width=800)
+    fig.update_layout(
+        dragmode=False,
+        xaxis= dict(
+            visible= False
+        ),
+        yaxis=dict(
+            visible= False
+        ),  
+        annotations= [
+            dict(
+                text= "No data to display. Select a cell in the heatmap for more information.",
+                showarrow= False,
+                font= dict(
+                    size= 16
+                )
+            )
+        ]
+    )
+    return fig
+
 
 
 def add_rectangle_shape(fig):
