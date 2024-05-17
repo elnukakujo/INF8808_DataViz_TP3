@@ -36,7 +36,7 @@ def get_empty_figure():
                 )
             )
         ],
-        plot_bgcolor="#ffffff" #THEME['background_color']
+        plot_bgcolor=THEME['background_color']
     )
     return fig
 
@@ -58,8 +58,8 @@ def add_rectangle_shape(fig):
         type='rect',
         x0=0, x1=4,
         y0=1, y1=3,
-        fillcolor='#DFD9E2', #THEME['pale_color']
-        line_color='#ffffff' #THEME['background_color']
+        fillcolor=THEME['pale_color'], 
+        line_color=THEME['background_color'] 
     )
     return fig
 
@@ -86,4 +86,20 @@ def get_figure(line_data, arrond, year):
             The figure to be displayed
     '''
     # TODO : Construct the required figure. Don't forget to include the hover template
-    return None
+    fig=px.line(
+        line_data,
+        x='Date_Plantation',
+        y='Counts',
+        title=f'Trees planted in {arrond}'
+    )
+    fig.update_xaxes(
+        tickformat="%d %b"
+    )
+    fig.update_traces(
+        line_color=THEME['line_chart_color']
+    )
+    fig.update_layout(
+        xaxis_title=None,
+        yaxis_title='Trees'
+    )
+    return fig

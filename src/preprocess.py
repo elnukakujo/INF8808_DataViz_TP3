@@ -91,6 +91,5 @@ def get_daily_info(dataframe, arrond, year):
             neighborhood and year.
     '''
     # TODO : Get daily tree count data and return
-    
-    dfArrond=dataframe.set_index('Date_Plantation').groupby('Arrond_Nom').get_group(arrond).resample('1D').sum().reset_index()
-    return dfArrond[dfArrond.Date_Plantation.dt.year==year]
+    dfArrond=dataframe.set_index('Date_Plantation').groupby('Arrond_Nom').get_group(arrond).resample('1D').sum(numeric_only=True).reset_index()
+    return dfArrond[dfArrond.Date_Plantation.dt.year==int(year[:4])]
