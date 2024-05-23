@@ -86,7 +86,7 @@ def get_figure(line_data, arrond, year):
             The figure to be displayed
     '''
     # TODO : Construct the required figure. Don't forget to include the hover template
-    if len(line_data.Counts.sort_values())>2:
+    if len(line_data[line_data.Counts!=0].Counts)>1:
         fig=px.line(
             line_data,
             x='Date_Plantation',

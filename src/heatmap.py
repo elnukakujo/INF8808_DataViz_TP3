@@ -21,7 +21,6 @@ def get_figure(data):
 
     # TODO : Create the heatmap. Make sure to set dragmode=False in
     # the layout. Also don't forget to include the hover template.
-    print(data.columns)
     fig = px.imshow(
         data, 
         x=data.columns, 
@@ -30,8 +29,7 @@ def get_figure(data):
             x='Year',
             y='Neighborhood',
             colortitle='Trees'
-        ),
-        color_continuous_scale='Bluyl', #THEME['colorscale']
+        )
     )
     fig.update_layout(
         dragmode=False,
@@ -39,7 +37,8 @@ def get_figure(data):
             tickmode='array',
             tickvals=data.columns,
             ticktext=data.columns.year
-        )
+        ),
+        coloraxis=dict(colorbar=dict(title='Trees'))
     )
     fig.update_traces(
         hovertemplate=hover_template.get_heatmap_hover_template()
