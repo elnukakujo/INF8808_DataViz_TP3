@@ -29,7 +29,8 @@ def get_figure(data):
             x='Year',
             y='Neighborhood',
             colortitle='Trees'
-        )
+        ),
+        color_continuous_scale='Bluyl'
     )
     fig.update_layout(
         dragmode=False,

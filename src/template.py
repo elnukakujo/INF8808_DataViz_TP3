@@ -66,7 +66,7 @@ def create_custom_theme():
             newshape=dict(
                 line_color=THEME['line_chart_color']
             ),
-            colorscale=dict(diverging=THEME['colorscale']),
+            coloraxis=dict(colorscale=THEME['colorscale']),
             xaxis=dict(
                 tickangle=-45
             )
