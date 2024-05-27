@@ -21,5 +21,29 @@ def get_figure(data):
 
     # TODO : Create the heatmap. Make sure to set dragmode=False in
     # the layout. Also don't forget to include the hover template.
-
-    return None
+    fig = px.imshow(
+        data, 
+        x=data.columns, 
+        y=data.index, 
+        labels=dict(
+            x='Year',
+            y='Neighborhood',
+            colortitle='Trees'
+        ),
+        color_continuous_scale='Bluyl'
+    ) # I found away to stop the override of the colorscale here but this requires to go.Figure instead
+    
+    fig.update_layout(
+        dragmode=False,
+        xaxis=dict(
+            tickmode='array',
+            tickvals=data.columns,
+            ticktext=data.columns.year
+        ),
+        coloraxis=dict(colorbar=dict(title='Trees'))
+        # The coloraxis parameter creates the side bar showing the scale of the color on the left side
+    )
+    fig.update_traces(
+        hovertemplate=hover_template.get_heatmap_hover_template()
+    )
+    return fig

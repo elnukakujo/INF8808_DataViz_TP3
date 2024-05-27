@@ -15,10 +15,31 @@ def get_empty_figure():
         in the heatmap for more information.
 
     '''
-
     # TODO : Construct the empty figure to display. Make sure to 
     # set dragmode=False in the layout.
-    return None
+    
+    fig=px.scatter()
+    fig.update_layout(
+        dragmode=False,
+        xaxis= dict(
+            visible= False
+        ),
+        yaxis=dict(
+            visible= False
+        ),  
+        annotations= [
+            dict(
+                text= "No data to display. Select a cell in the heatmap for more information.",
+                showarrow= False,
+                font= dict(
+                    size= 14
+                )
+            )
+        ],
+        plot_bgcolor=THEME['background_color']
+    )
+    return fig # Creates an empty scatter plot with no axis just an annotation in the middle explaining the situation
+
 
 
 def add_rectangle_shape(fig):
@@ -31,8 +52,16 @@ def add_rectangle_shape(fig):
         paper of the figure. The height goes from
         0.25% to 0.75% the height of the figure.
     '''
-    # TODO : Draw the rectangle
-    return None
+    fig.update_xaxes(range=[0,4])
+    fig.update_yaxes(range=[0,4])
+    fig.add_shape(
+        type='rect',
+        x0=0, x1=4,
+        y0=1, y1=3,
+        fillcolor=THEME['pale_color'], 
+        line_color=THEME['background_color'] 
+    ) # I need to create axis because I don't know how to define the shape of the rectangle without them. Maybe using percentages?
+    return fig
 
 
 def get_figure(line_data, arrond, year):
@@ -57,4 +86,29 @@ def get_figure(line_data, arrond, year):
             The figure to be displayed
     '''
     # TODO : Construct the required figure. Don't forget to include the hover template
-    return None
+    if len(line_data[line_data.Counts!=0].Counts)>1: # If statement to check if there is only one point to the arrond in the data
+        fig=px.line(
+            line_data,
+            x='Date_Plantation',
+            y='Counts',
+            title=f'Trees planted in {arrond}'
+        )
+    else:
+        fig=px.scatter(
+            line_data[line_data.Counts!=0],
+            x='Date_Plantation',
+            y='Counts',
+            title=f'Trees planted in {arrond}'
+        )
+    fig.update_xaxes(
+            tickformat="%d %b" # To show day and month in letters
+    )
+    fig.update_traces(
+        line_color=THEME['line_chart_color'],
+        hovertemplate=hover_template.get_linechart_hover_template()
+    )
+    fig.update_layout(
+        xaxis_title=None,
+        yaxis_title='Trees'
+    )
+    return fig
