@@ -51,7 +51,7 @@ def create_custom_theme():
     pio.templates['mytemplate'] = go.layout.Template(
         layout=go.Layout(
             font=dict(
-                family=THEME['font_family']+' , '+ THEME['accent_font_family'],
+                family=THEME['font_family']+' , '+ THEME['accent_font_family'], # Not sure this works...
                 color=THEME['dark_color']
             ),
             paper_bgcolor=THEME['background_color'],
@@ -63,13 +63,10 @@ def create_custom_theme():
                 )
             ),
             hovermode="closest",
-            newshape=dict(
-                line_color=THEME['line_chart_color']
-            ),
-            coloraxis=dict(colorscale=THEME['colorscale']),
+            coloraxis=dict(colorscale=THEME['colorscale']), # The color axis of the heatmap defined here keeps getting override by the basic one of plotly_white
             xaxis=dict(
                 tickangle=-45
-            )
+            ) # This changes the orientation of the xaxis labels
         )
     )
 
@@ -81,3 +78,4 @@ def set_default_theme():
     '''
     # TODO : Set default theme
     pio.templates.default='mytemplate+plotly_white'
+    # We combine them here

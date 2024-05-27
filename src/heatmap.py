@@ -31,7 +31,8 @@ def get_figure(data):
             colortitle='Trees'
         ),
         color_continuous_scale='Bluyl'
-    )
+    ) # I found away to stop the override of the colorscale here but this requires to go.Figure instead
+    
     fig.update_layout(
         dragmode=False,
         xaxis=dict(
@@ -40,6 +41,7 @@ def get_figure(data):
             ticktext=data.columns.year
         ),
         coloraxis=dict(colorbar=dict(title='Trees'))
+        # The coloraxis parameter creates the side bar showing the scale of the color on the left side
     )
     fig.update_traces(
         hovertemplate=hover_template.get_heatmap_hover_template()

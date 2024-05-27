@@ -15,9 +15,10 @@ def get_heatmap_hover_template():
         are font 'Roboto' and regular weight.
     '''
     # TODO : Define and return the hover template
-    return ('<span style="font-family: Roboto Slabk"><b>Neighborhood : </b></span>%{y}'
-            +'<br><span style="font-family: Roboto Slabk"><b>Year : </b></span>%{x}</br>'
-            +'<span style="font-family: Roboto Slabk"><b>Trees planted : </b></span>%{z}<extra></extra>')
+    return ('<span style="font-family: Roboto Slabk"><b>Neighborhood : </b></span><span style="font-family: Roboto">%{y}</span>'
+            +'<br><span style="font-family: Roboto Slabk"><b>Year : </b></span><span style="font-family: Roboto">%{x}</span></br>'
+            +'<span style="font-family: Roboto Slabk"><b>Trees planted : </b></span><span style="font-family: Roboto">%{z}</span><extra></extra>')
+    # I didn't find a way how we can avoid specifying the font family here again...
 
 def get_linechart_hover_template():
     '''
@@ -30,6 +31,7 @@ def get_linechart_hover_template():
         are font 'Roboto' and regular weight.
     '''
     # TODO : Define and return the hover template
-    return ('<span style="font-family: Roboto Slabk"><b>Date : </b></span>%{x}'
-            +'<br><span style="font-family: Roboto Slabk"><b>Trees : </b></span>%{y}</br>')
+    return ('<span style="font-family: Roboto Slabk"><b>Date : </b></span><span style="font-family: Roboto">%{x}</span>'
+            +'<br><span style="font-family: Roboto Slabk"><b>Trees : </b></span><span style="font-family: Roboto">%{y}</span></br><extra></extra>')
+    # I didn't find a way how we can avoid specifying the font family here again...
 

@@ -38,7 +38,7 @@ def get_empty_figure():
         ],
         plot_bgcolor=THEME['background_color']
     )
-    return fig
+    return fig # Creates an empty scatter plot with no axis just an annotation in the middle explaining the situation
 
 
 
@@ -60,7 +60,7 @@ def add_rectangle_shape(fig):
         y0=1, y1=3,
         fillcolor=THEME['pale_color'], 
         line_color=THEME['background_color'] 
-    )
+    ) # I need to create axis because I don't know how to define the shape of the rectangle without them. Maybe using percentages?
     return fig
 
 
@@ -86,7 +86,7 @@ def get_figure(line_data, arrond, year):
             The figure to be displayed
     '''
     # TODO : Construct the required figure. Don't forget to include the hover template
-    if len(line_data[line_data.Counts!=0].Counts)>1:
+    if len(line_data[line_data.Counts!=0].Counts)>1: # If statement to check if there is only one point to the arrond in the data
         fig=px.line(
             line_data,
             x='Date_Plantation',
@@ -101,7 +101,7 @@ def get_figure(line_data, arrond, year):
             title=f'Trees planted in {arrond}'
         )
     fig.update_xaxes(
-            tickformat="%d %b"
+            tickformat="%d %b" # To show day and month in letters
     )
     fig.update_traces(
         line_color=THEME['line_chart_color'],
