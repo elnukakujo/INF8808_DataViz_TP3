@@ -63,7 +63,7 @@ def create_custom_theme():
                 )
             ),
             hovermode="closest",
-            coloraxis=dict(colorscale=THEME['colorscale']), # The color axis of the heatmap defined here keeps getting override by the basic one of plotly_white
+            colorscale_sequential=THEME['colorscale'],
             xaxis=dict(
                 tickangle=-45
             ) # This changes the orientation of the xaxis labels
@@ -77,5 +77,5 @@ def set_default_theme():
         'plotly_white' theme and our custom theme.
     '''
     # TODO : Set default theme
-    pio.templates.default='mytemplate+plotly_white'
+    pio.templates.default='plotly_white+mytemplate'
     # We combine them here

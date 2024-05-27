@@ -29,9 +29,8 @@ def get_figure(data):
             x='Year',
             y='Neighborhood',
             colortitle='Trees'
-        ),
-        color_continuous_scale='Bluyl'
-    ) # I found away to stop the override of the colorscale here but this requires to go.Figure instead
+        )
+    )
     
     fig.update_layout(
         dragmode=False,
